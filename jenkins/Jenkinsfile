@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    environment {
+        NETWORK_NAME = 'cifertech-network'
+    }
+
+    stages {
+        stage('Prepare Network') {
+            steps {
+                echo "Verifing network"
+                sh "docker network create ${NETWORK_NAME} || true"
+            }
+        }
+
+        stage('Run proxy') {
+            steps {
+                
+                    echo 'Starting the proxy container and the internal network'
+                    sh 'docker compose up -d'
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nginx:
+    build: .
+    container_name: cifertech-proxy
+    ports:
+      - "8443:443"
+      - "8080:80"
+    volumes:
+      - ./ssl:/etc/nginx/ssl
+    networks:
+      - cifertech-network
+networks:
+  cifertech-network:
+    external: true
