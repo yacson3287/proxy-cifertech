@@ -17,6 +17,7 @@ pipeline {
             steps {
                 
                     echo 'Starting the proxy container and the internal network'
+                    sh 'docker compose build'
                     sh 'docker compose up -d'
             }
         }
