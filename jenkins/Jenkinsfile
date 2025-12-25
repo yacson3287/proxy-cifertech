@@ -13,6 +13,13 @@ pipeline {
             }
         }
 
+         stage('Build') {
+            steps {
+                echo "Verifing network"
+                sh "docker compose build"
+            }
+        }
+
         stage('Run proxy') {
             steps {
                 
